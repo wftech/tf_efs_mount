@@ -14,7 +14,7 @@ resource "aws_efs_file_system" "efs" {
 }
 
 resource "aws_efs_mount_target" "efs" {
-  count = "${var.count}"
+  count = "${var.subnet_count}"
 
   file_system_id = "${aws_efs_file_system.efs.id}"
   subnet_id      = "${element(split(",", var.subnets), count.index)}"
